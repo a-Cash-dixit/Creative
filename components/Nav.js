@@ -4,7 +4,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Nav() {
   const [user, loading] = useAuthState(auth);
-  console.log(user);
+  //console.log(user);
+  //console.log(user.photoURL);
+  let url="";
+  if(user){
+    url=user.photoURL;
+  }
   return (
     <nav>
       <Link href="/">
@@ -27,7 +32,7 @@ export default function Nav() {
             </Link>
             <Link href="/dashboard">
               <img
-                src={user.photoURL}
+                src={url}
               />
             </Link>
           </div>
