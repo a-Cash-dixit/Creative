@@ -23,11 +23,11 @@ export default function Login(){
         }
     },[user])
     return (
-        <div>
-            <h2>Join Today</h2>
-            <div>
-                <h3>Sign in with one of the providers.</h3>
-                <button onClick={GoogleLogin}>Sign in with Google</button>
+        <div style={{background:"orange",display:"flex",flexDirection:"column",alignItems:"center"}}>
+            <h2 style={{color:"brown",fontFamily:"monospace"}}>Join Today</h2>
+            <div style={{display:"flex",flexDirection:"column",padding:"2%"}}>
+                <h3 style={{color:"brown",fontFamily:"monospace"}}>Sign in with one of the providers.</h3>
+                <button style={{color:"brown",background:"khaki",border:"none",fontSize:"16px",cursor:"pointer",fontFamily:"monospace"}} onClick={GoogleLogin}>Sign in with Google</button>
             </div>
         </div>
     )

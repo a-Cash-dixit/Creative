@@ -40,15 +40,14 @@ export default function Post(){
         route.push("/");
     };
     return (
-        <div>
-            <form onSubmit={SubmitPost}>
-                <h1>Create a New Post</h1>
-                <div>
-                    <h3>Description</h3>
-                    <textarea rows={8} cols={15} value={post.description} onChange={(e)=>{setPost({...post,"description":e.target.value})}}></textarea>
-                    <p>{post.description.length}/300</p>
+        <div style={{display:"flex",background:"orange"}}>
+            <form style={{padding:"2%"}} onSubmit={SubmitPost}>
+                <h1 style={{color:"brown",fontFamily:"monospace"}}>Create a New Post</h1>
+                <div style={{display:"flex",flexDirection:"column"}}>
+                    <textarea style={{background:"skyblue",color:"white"}} placeholder="Description..." rows={8} cols={15} value={post.description} onChange={(e)=>{setPost({...post,"description":e.target.value})}}></textarea>
+                    <p style={{color:"brown",fontFamily:"monospace"}}>{post.description.length}/300</p>
                 </div>
-                <button type="submit">Submit</button>
+                <button style={{color:"brown",background:"khaki",border:"none",fontSize:"16px",cursor:"pointer",fontFamily:"monospace"}} type="submit">Submit</button>
             </form>
         </div>
     )

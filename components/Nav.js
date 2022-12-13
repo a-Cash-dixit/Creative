@@ -11,14 +11,14 @@ export default function Nav() {
     url=user.photoURL;
   }
   return (
-    <nav>
+    <nav style={{display:"flex",justifyContent:"space-evenly",alignItems:"center",background:"teal"}}>
       <Link href="/">
-        <button>Creative Minds</button>
+        <button style={{color:"pink",background:"teal",border:"none",fontSize:"22px",cursor:"pointer",fontFamily:"monospace"}}>Creative Minds</button>
       </Link>
       <ul>
         {!user && (
           <Link href={"/auth/login"}>
-            <button>
+            <button style={{color:"brown",background:"khaki",border:"none",fontSize:"16px",cursor:"pointer",fontFamily:"monospace"}}>
               Join Now
             </button>
           </Link>
@@ -26,7 +26,7 @@ export default function Nav() {
         {user && (
           <div>
             <Link href="/post">
-              <button>
+              <button style={{color:"brown",background:"khaki",border:"none",fontSize:"16px",cursor:"pointer",fontFamily:"monospace"}}>
                 Post
               </button>
             </Link>
