@@ -10,6 +10,7 @@ export default function Nav() {
   if(user){
     url=user.photoURL;
   }
+  
   return (
     <nav style={{display:"flex",justifyContent:"space-evenly",alignItems:"center",background:"teal"}}>
       <Link href="/">
