@@ -1,20 +1,30 @@
-import Head from 'next/head'
-import Message from '../components/Message'
-import { db } from '../utils/firebase'
-import react from 'react'
-import { collection, doc, orderBy, query,onSnapshot } from 'firebase/firestore';
+import Head from "next/head";
+import Message from "../components/Message";
+import { db } from "../utils/firebase";
+import react from "react";
+import {
+  collection,
+  doc,
+  orderBy,
+  query,
+  onSnapshot,
+} from "firebase/firestore";
 export default function Home() {
-  const [allPosts,setallPosts]=react.useState([]);
-  const getPosts=async()=>{
-    const collectionRef=collection(db,'posts');
-    const q=query(collectionRef,orderBy("timeStamp","desc"));
+  const [allPosts, setallPosts] = react.useState([]);
+  const getPosts = async () => {
+    const collectionRef = collection(db, "posts");
+    const q = query(collectionRef, orderBy("timeStamp", "desc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      setallPosts(snapshot.docs.map((doc)=>({
-        ...doc.data(),id:doc.id
-      })));
-  });
-  }
-  react.useEffect(()=>{
+      setallPosts(
+        snapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      );
+    });
+    return unsubscribe;
+  };
+  react.useEffect(() => {
     getPosts();
   },[]);
   return (
@@ -26,12 +36,10 @@ export default function Home() {
       </Head>
       <div>
         <h2>What's happening...</h2>
-        {
-          allPosts.map((post)=>{
-            <Message {...post} />
-          })
-        }
-      </div>
+        {allPosts.map((post) => (
+          <Message key={post.id} {...post}></Message>
+        ))}
+      </div> 
     </div>
-  )
+  );
 }

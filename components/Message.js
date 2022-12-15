@@ -1,9 +1,8 @@
-
 export default function Message({children,avatar,username,description}){
     return (
         <div>
             <div>
-                <img src={avatar}> </img>
+            <img src={avatar} ></img>
                 <h2>{username}</h2>
             </div>
             <div>
