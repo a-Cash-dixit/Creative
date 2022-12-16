@@ -4,11 +4,14 @@ import { useRouter } from "next/router";
 import react from "react";
 import {
   collection,
+  deleteDoc,
+  doc,
   onSnapshot,
   query,
   where,
 } from "firebase/firestore";
 import Message from "../components/Message";
+import Link from "next/link";
 export default function Dashboard() {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
@@ -40,13 +43,23 @@ export default function Dashboard() {
   react.useEffect(() => {
     getData();
   }, [user, loading]);
+  //delete post
+  const deletePost=async (id)=>{
+    const docRef=doc(db,"posts",id);
+    await deleteDoc(docRef);
+  }
   return (
     <div>
       <h1>Your Posts</h1>
       <div>{
         myPosts.map((post)=>{
             return(
-                <Message key={post.id} {...post}></Message>
+                <Message key={post.id} {...post}>
+                  <div>
+                    <button onClick={()=>deletePost(post.id)}>Delete</button>
+                    <Link href={{pathname:"/post",query:post}}><button>Edit</button></Link>
+                  </div>
+                </Message>
             )
         })}</div>
       <button onClick={() => auth.signOut()}>Sign Out</button>
