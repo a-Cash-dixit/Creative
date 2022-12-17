@@ -2,6 +2,8 @@ import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import react from "react";
+import {FiTrash,FiEdit3} from "react-icons/fi";
+import {FcLikePlaceholder,FcLike} from "react-icons/fc";
 import {
   collection,
   deleteDoc,
@@ -55,10 +57,12 @@ export default function Dashboard() {
         myPosts.map((post)=>{
             return(
                 <Message key={post.id} {...post}>
-                  <div>
-                    <button onClick={()=>deletePost(post.id)}>Delete</button>
-                    <Link href={{pathname:"/post",query:post}}><button>Edit</button></Link>
-                  </div>
+                  <FiTrash size={20} color="red" onClick={()=>deletePost(post.id)} cursor="pointer"></FiTrash>
+                    <Link href={{pathname:"/post",query:post}}><FiEdit3 size={20} color="white"></FiEdit3></Link>
+                    <FcLike size={20}></FcLike>
+                  {/* <div style={{padding:"4%",display:"flex",alignItems:"center"}}>
+                    
+                  </div> */}
                 </Message>
             )
         })}</div>

@@ -2,6 +2,8 @@ import Head from "next/head";
 import Message from "../components/Message";
 import { db } from "../utils/firebase";
 import react from "react";
+import { FaComments } from "react-icons/fa";
+import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import {
   collection,
   doc,
@@ -27,7 +29,7 @@ export default function Home() {
   };
   react.useEffect(() => {
     getPosts();
-  },[]);
+  }, []);
   return (
     <div>
       <Head>
@@ -39,12 +41,20 @@ export default function Home() {
         <h2>What's happening...</h2>
         {allPosts.map((post) => (
           <Message key={post.id} {...post}>
-            <Link href={{pathname:`${post.id}`,query:{...post}}}>
-              <button>Comments</button>
+            <div style={{display:"flex"}}>
+            <Link
+              href={{ pathname: `${post.id}`, query: { ...post } }}
+              style={{ display: "flex" }}
+            >
+              <FaComments size={20} color="white"></FaComments>
             </Link>
+            </div>
+            <div>
+              <FcLike size={20}></FcLike>
+            </div>
           </Message>
         ))}
-      </div> 
+      </div>
     </div>
   );
 }
