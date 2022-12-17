@@ -9,6 +9,7 @@ import {
   query,
   onSnapshot,
 } from "firebase/firestore";
+import Link from "next/link";
 export default function Home() {
   const [allPosts, setallPosts] = react.useState([]);
   const getPosts = async () => {
@@ -37,7 +38,11 @@ export default function Home() {
       <div>
         <h2>What's happening...</h2>
         {allPosts.map((post) => (
-          <Message key={post.id} {...post}></Message>
+          <Message key={post.id} {...post}>
+            <Link href={{pathname:`${post.id}`,query:{...post}}}>
+              <button>Comments</button>
+            </Link>
+          </Message>
         ))}
       </div> 
     </div>

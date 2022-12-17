@@ -25,7 +25,7 @@ export default function Nav() {
           </Link>
         )}
         {user && (
-          <div>
+          <div style={{display:"flex",alignItems:"center"}}>
             <Link href="/post">
               <button style={{color:"brown",background:"khaki",border:"none",fontSize:"16px",cursor:"pointer",fontFamily:"monospace"}}>
                 Post
@@ -33,6 +33,7 @@ export default function Nav() {
             </Link>
             <Link href="/dashboard">
               <img
+                style={{width:"60%",height:"60%",borderRadius:"100%",margin:"7%"}}
                 src={url}
               />
             </Link>
