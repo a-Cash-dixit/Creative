@@ -85,7 +85,7 @@ export default function Post() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <textarea
             style={{ background: "skyblue", color: "white" }}
-            placeholder="Description..."
+            placeholder="What's happening?"
             rows={8}
             cols={15}
             value={post.description}

@@ -47,7 +47,7 @@ export default function Message({ children, avatar, username, description }) {
           >
             {description}
           </div>
-          <div style={{ display: "flex", justifyContent:"space-between",maxWidth:"37%",marginTop:"0.7rem"}}>
+          <div style={{ display: "flex", justifyContent:"space-between",maxWidth:"20%",marginTop:"0.7rem"}}>
             {children}
           </div>
         </div>

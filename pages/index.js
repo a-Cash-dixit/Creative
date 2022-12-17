@@ -4,6 +4,7 @@ import { db } from "../utils/firebase";
 import react from "react";
 import { FaComments } from "react-icons/fa";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
+import {TbMessageCircle2} from "react-icons/tb";
 import {
   collection,
   doc,
@@ -38,19 +39,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h2>What's happening...</h2>
         {allPosts.map((post) => (
           <Message key={post.id} {...post}>
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex",width:"34%",justifyContent:"space-between"}}>
             <Link
               href={{ pathname: `${post.id}`, query: { ...post } }}
               style={{ display: "flex" }}
             >
-              <FaComments size={20} color="white"></FaComments>
+              <TbMessageCircle2 size={20} color="white"></TbMessageCircle2>
             </Link>
-            </div>
-            <div>
+            <Link
+              href={{ pathname: `${post.id}`, query: { ...post } }}
+              style={{ display: "flex" ,color:"#AAB8C2",textDecorationLine:"none"}}
+            >
+              {post.comments && `${post.comments.length}`}
+            </Link>
+            </div >
+            <div style={{display:"flex",width:"40%",justifyContent:"space-between"}}>
+            <Link
+              href={{ pathname: `${post.id}`, query: { ...post } }}
+              style={{ display: "flex" ,color:"#AAB8C2",textDecorationLine:"none"}}
+            >
               <FcLike size={20}></FcLike>
+            </Link>
             </div>
           </Message>
         ))}
