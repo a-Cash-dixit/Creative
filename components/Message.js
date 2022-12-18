@@ -1,4 +1,39 @@
-export default function Message({ children, avatar, username, description }) {
+export default function Message({ children, avatar, username, description,timestamp }) {
+  //console.log(timestamp.toDate().toLocaleTimeString());
+  const currentMonth=new Date().getMonth();
+  const currentYear=new Date().getFullYear();
+  const currentDay=new Date().getDate();
+  const dayCreated=timestamp.toDate().getDate();
+  const monthCreated=timestamp.toDate().getMonth();
+  const yearCreated=timestamp.toDate().getFullYear();
+  const v=["Jan","Feb","Mar","Apr","May","June","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let ans;
+  if(!(currentDay==dayCreated && currentMonth==monthCreated && currentYear==yearCreated)){
+    ans=v[monthCreated] +" "+ dayCreated.toString(); 
+  }
+  else{
+    let hc=timestamp.toDate().getHours();
+    let mc=timestamp.toDate().getMinutes();
+    let sc=timestamp.toDate().getSeconds();
+    //let h=(new Date().getHours()+24)%12 || 12;
+    let h=new Date().getHours();
+    let m=new Date().getMinutes();
+    let s=new Date().getSeconds();
+    //console.log(h,m,s);
+    if(h>hc){
+      ans=h-hc;
+      ans=ans.toString()+"h";
+    }
+    else if(m>mc){
+      ans=m-mc;
+      ans=ans.toString()+"m";
+    }
+    else{
+      ans=s-sc;
+      ans=ans.toString()+"s";
+    }
+  }
+  //console.log(ans);
   return (
     <div
       style={{
@@ -36,7 +71,7 @@ export default function Message({ children, avatar, username, description }) {
               fontFamily: "cursive",
             }}
           >
-            {username}
+            {username} {ans}
           </div>
           <div
             style={{
@@ -56,33 +91,3 @@ export default function Message({ children, avatar, username, description }) {
   );
 }
 
-{
-  /* <div style={{ background: "#243447", display: "flex",flexDirection:"column",marginBottom:"0.15%" }}>
-      <div style={{ display:"flex",alignItems:"center"}}>
-        <img
-          src={avatar}
-          style={{
-            width:"8%",
-            borderRadius: "100%",
-          }}
-        ></img>
-        <div>
-          <h2 style={{color:"#E1E8ED",fontFamily:"monospace"}}>{username}</h2>
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          color: "#F5F8FA",
-          wordBreak:"break-all",
-          fontFamily:"monospace",
-          marginLeft:"1px"
-        }}
-      >
-        <p>{description}</p>
-      </div>
-      <div style={{display:"flex",justifyContent:"space-around",width:"12%"}}>
-      {children}
-      </div>
-    </div> */
-}

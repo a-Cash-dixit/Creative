@@ -30,14 +30,14 @@ export default function Dashboard() {
     const q = query(collectionRef,where("user", "==", user.uid));
     //console.log(q);
     const unsubscribe = onSnapshot(q, (snapshot) => {
-        console.log("runn!!");
+        //console.log("runn!!");
       setmyPosts(
         snapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
         }))
       );
-      console.log(myPosts);
+      //console.log(myPosts);
     });
     return unsubscribe;
   };

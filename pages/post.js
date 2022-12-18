@@ -50,7 +50,7 @@ export default function Post() {
       await addDoc(collectionRef, {
         ...post,
         user: user.uid,
-        timeStamp: serverTimestamp(),
+        timestamp: serverTimestamp(),
         avatar: user.photoURL,
         username: user.displayName,
       });
