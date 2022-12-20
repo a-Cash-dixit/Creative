@@ -3,11 +3,15 @@ export default function Message({ children, avatar, username, description,timest
   const currentMonth=new Date().getMonth();
   const currentYear=new Date().getFullYear();
   const currentDay=new Date().getDate();
-  const dayCreated=timestamp.toDate().getDate();
-  const monthCreated=timestamp.toDate().getMonth();
-  const yearCreated=timestamp.toDate().getFullYear();
+  let dayCreated="",monthCreated="",yearCreated="";
+  if(timestamp){
+      dayCreated=timestamp.toDate().getDate();
+    monthCreated=timestamp.toDate().getMonth();
+    yearCreated=timestamp.toDate().getFullYear();
+  }
+  //console.log(dayCreated);
   const v=["Jan","Feb","Mar","Apr","May","June","Jul","Aug","Sep","Oct","Nov","Dec"];
-  let ans;
+  let ans="";
   if(!(currentDay==dayCreated && currentMonth==monthCreated && currentYear==yearCreated)){
     ans=v[monthCreated] +" "+ dayCreated.toString(); 
   }
@@ -32,6 +36,9 @@ export default function Message({ children, avatar, username, description,timest
       ans=s-sc;
       ans=ans.toString()+"s";
     }
+  }
+  if(!timestamp){
+    ans="";
   }
   //console.log(ans);
   return (

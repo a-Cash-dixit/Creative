@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Post from "../pages/post";
 
 export default function Nav() {
   const [user, loading] = useAuthState(auth);
@@ -12,9 +13,9 @@ export default function Nav() {
   }
   
   return (
-    <nav style={{display:"flex",justifyContent:"space-evenly",alignItems:"center",background:"teal"}}>
+    <nav style={{display:"flex",justifyContent:"space-evenly",alignItems:"center",background:"teal",height:"4rem"}}>
       <Link href="/">
-        <button style={{color:"pink",background:"teal",border:"none",fontSize:"22px",cursor:"pointer",fontFamily:"monospace"}}>Creative Minds</button>
+        <button style={{color:"pink",background:"teal",border:"none",fontSize:"22px",cursor:"pointer",fontFamily:"monospace"}}>Home</button>
       </Link>
       <ul>
         {!user && (
@@ -27,13 +28,13 @@ export default function Nav() {
         {user && (
           <div style={{display:"flex",alignItems:"center"}}>
             <Link href="/post">
-              <button style={{color:"brown",background:"khaki",border:"none",fontSize:"16px",cursor:"pointer",fontFamily:"monospace"}}>
+              <button style={{fontWeight:"700", color:"#E1E8ED",background:"#1DA1F2",border:"none",fontSize:"16px",cursor:"pointer",fontFamily:"cursive",borderRadius:"20%"}}>
                 Post
               </button>
             </Link>
             <Link href="/dashboard">
               <img
-                style={{width:"60%",height:"60%",borderRadius:"100%",margin:"7%"}}
+                style={{width:"56%",height:"56%",borderRadius:"100%",margin:"7%"}}
                 src={url}
               />
             </Link>

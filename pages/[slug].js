@@ -47,7 +47,7 @@ export default function Comments(){
         <div>
             <Message {...routeData}></Message>
             <div style={{display:"flex",height:"2rem"}}>
-                  <input style={{flex:"8",background:"#14171A",color:"#E1E8ED"}} onChange={(e)=>setComment(e.target.value)} value={comment} placeholder="Type a comment..." type="text" />
+                  <input style={{flex:"8",background:"#14171A",color:"#E1E8ED",fontFamily:"cursive"}} onChange={(e)=>setComment(e.target.value)} value={comment} placeholder="Type a comment..." type="text" />
                   <button style={{background:"#1DA1F2",color:"#E1E8ED",border:"none",cursor:"pointer"}} onClick={submitComment}>Submit</button>
             </div>
             <div>
