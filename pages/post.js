@@ -2,7 +2,7 @@ import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import react from "react";
 import {
-    doc,
+  doc,
   addDoc,
   collection,
   serverTimestamp,
@@ -39,10 +39,10 @@ export default function Post() {
       const docRef = doc(db, "posts", post.id);
       const updatedPost = { ...post, timestamp: serverTimestamp() };
       await updateDoc(docRef, updatedPost);
-      toast.success("Edited Successfully 🖊",{
-        position:toast.POSITION.TOP_CENTER,
-        autoClose:1500
-      })
+      toast.success("Edited Successfully 🖊", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1500,
+      });
       return route.push("/");
     } else {
       //make a post
@@ -55,10 +55,10 @@ export default function Post() {
         username: user.displayName,
       });
       setPost({ description: "" });
-      toast.success("Posted Successfully 🧨",{
-        position:toast.POSITION.TOP_CENTER,
-        autoClose:1500
-      })
+      // toast.success("Posted Successfully 🧨",{
+      //   position:toast.POSITION.TOP_CENTER,
+      //   autoClose:1500
+      // })
       return route.push("/");
     }
   };
@@ -77,34 +77,34 @@ export default function Post() {
     checkUser();
   }, [user, loading]);
   return (
-    <div style={{ display: "flex", background: "orange" }}>
+    <div style={{ display: "flex", background: "#243447" ,width:"150%"}}>
       <form style={{ padding: "2%" }} onSubmit={SubmitPost}>
-        <h1 style={{ color: "brown", fontFamily: "monospace" }}>
-          {post.id ? "Edit the Post" : "Create a New Post"}
-        </h1>
+        <h4 style={{ color: "brown", fontFamily: "cursive" }}>
+          {post.id ? "Edit the Post" : "Create a Post"}
+        </h4>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <textarea
-            style={{ background: "skyblue", color: "white" }}
+          <input
+            style={{ background: "black", color: "white",border:"none" ,width:"140%"}}
             placeholder="What's happening?"
-            rows={8}
-            cols={15}
             value={post.description}
             onChange={(e) => {
               setPost({ ...post, description: e.target.value });
             }}
-          ></textarea>
+          ></input>
           <p style={{ color: "brown", fontFamily: "monospace" }}>
             {post.description.length}/300
           </p>
         </div>
         <button
           style={{
-            color: "brown",
-            background: "khaki",
+            fontWeight: "700",
+            color: "#E1E8ED",
+            background: "#1DA1F2",
             border: "none",
             fontSize: "16px",
             cursor: "pointer",
-            fontFamily: "monospace",
+            fontFamily: "cursive",
+            borderRadius: "10%",
           }}
           type="submit"
         >
